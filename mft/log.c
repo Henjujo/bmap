@@ -279,10 +279,10 @@ void
 mft_log_perror(int log_level,int eno,const char *message)
 {
 	if(eno<0) eno=-eno;
-	if(eno>sys_nerr)
+	if(eno>errno)
 		return;
 	
-	mft_logf(log_level,"%s: %s",message,sys_errlist[eno]);
+	mft_logf(log_level,"%s: %s",message,strerror(eno));
 	return;
 }
 
